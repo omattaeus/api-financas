@@ -1,8 +1,8 @@
-package br.com.matsoft.apifinancas.domain.ports;
+package br.com.matsoft.apifinancas.core.domain.ports;
 
-import br.com.matsoft.apifinancas.domain.entities.Despesas;
-import br.com.matsoft.apifinancas.domain.entities.Orcamentos;
-import br.com.matsoft.apifinancas.domain.entities.Receitas;
+import br.com.matsoft.apifinancas.core.domain.entities.Receitas;
+import br.com.matsoft.apifinancas.core.domain.entities.Despesas;
+import br.com.matsoft.apifinancas.core.domain.entities.Orcamentos;
 
 import java.util.Collection;
 

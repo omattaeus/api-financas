@@ -1,4 +1,4 @@
-package br.com.matsoft.apifinancas.domain.entities;
+package br.com.matsoft.apifinancas.core.domain.entities;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

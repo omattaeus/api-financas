@@ -1,13 +1,16 @@
-package br.com.matsoft.apifinancas.domain.usecase;
+package br.com.matsoft.apifinancas.application.usecases;
 
-import br.com.matsoft.apifinancas.domain.entities.Despesas;
-import br.com.matsoft.apifinancas.domain.entities.Orcamentos;
-import br.com.matsoft.apifinancas.domain.entities.Receitas;
-import br.com.matsoft.apifinancas.domain.ports.FinancasRepositoryService;
+import br.com.matsoft.apifinancas.core.domain.entities.Despesas;
+import br.com.matsoft.apifinancas.core.domain.entities.Orcamentos;
+import br.com.matsoft.apifinancas.core.domain.entities.Receitas;
+import br.com.matsoft.apifinancas.core.domain.ports.FinancasRepositoryService;
+import br.com.matsoft.apifinancas.core.domain.usecase.GetAllFinancasUseCase;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
-public class GetAllFinancasUseCaseImpl implements GetAllFinancasUseCase{
+@Service
+public class GetAllFinancasUseCaseImpl implements GetAllFinancasUseCase {
 
     private final FinancasRepositoryService financasRepositoryService;
 
