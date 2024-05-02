@@ -1,15 +1,15 @@
 package br.com.matsoft.apifinancas.application.usecases;
 
-import br.com.matsoft.apifinancas.core.domain.entities.Despesas;
-import br.com.matsoft.apifinancas.core.domain.entities.Orcamentos;
-import br.com.matsoft.apifinancas.core.domain.entities.Receitas;
+import br.com.matsoft.apifinancas.core.domain.dtos.DespesasDTO;
+import br.com.matsoft.apifinancas.core.domain.dtos.OrcamentosDTO;
+import br.com.matsoft.apifinancas.core.domain.dtos.ReceitasDTO;
 import br.com.matsoft.apifinancas.core.domain.exception.FinancasAlreadyExists;
 import br.com.matsoft.apifinancas.core.domain.ports.FinancasRepositoryService;
-import br.com.matsoft.apifinancas.core.domain.usecase.CreateFinancasUseCase;
+import br.com.matsoft.apifinancas.application.gateways.CreateFinancasGateways;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CreateFinancasUseCaseImpl implements CreateFinancasUseCase {
+public class CreateFinancasUseCaseImpl implements CreateFinancasGateways {
 
     private final FinancasRepositoryService financasRepositoryService;
 
@@ -18,29 +18,29 @@ public class CreateFinancasUseCaseImpl implements CreateFinancasUseCase {
     }
 
     @Override
-    public void createReceitas(Receitas receitas) throws FinancasAlreadyExists {
+    public ReceitasDTO createReceitas(ReceitasDTO receitas) throws FinancasAlreadyExists {
 
-        if(financasRepositoryService.doesFinancasNameExists(receitas.getNome()))
+        if(financasRepositoryService.doesFinancasNameExists(receitas.nome()))
             throw new FinancasAlreadyExists();
 
-        financasRepositoryService.saveReceitas(receitas);
+        return financasRepositoryService.saveReceitas(receitas);
     }
 
     @Override
-    public void createOrcamento(Orcamentos orcamentos) throws FinancasAlreadyExists {
+    public OrcamentosDTO createOrcamento(OrcamentosDTO orcamentos) throws FinancasAlreadyExists {
 
-        if(financasRepositoryService.doesFinancasNameExists(orcamentos.getNome()))
+        if(financasRepositoryService.doesFinancasNameExists(orcamentos.nome()))
             throw new FinancasAlreadyExists();
 
-        financasRepositoryService.saveOrcamentos(orcamentos);
+        return financasRepositoryService.saveOrcamentos(orcamentos);
     }
 
     @Override
-    public void createDespesas(Despesas despesas) throws FinancasAlreadyExists {
+    public DespesasDTO createDespesas(DespesasDTO despesas) throws FinancasAlreadyExists {
 
-        if(financasRepositoryService.doesFinancasNameExists(despesas.getNome()))
+        if(financasRepositoryService.doesFinancasNameExists(despesas.nome()))
             throw new FinancasAlreadyExists();
 
-        financasRepositoryService.saveDespesas(despesas);
+        return financasRepositoryService.saveDespesas(despesas);
     }
 }

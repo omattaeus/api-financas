@@ -1,10 +1,16 @@
-package br.com.matsoft.apifinancas.core.domain.entities;
+package br.com.matsoft.apifinancas.adapters.persistence;
+
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class Orcamentos {
+public class OrcamentosEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nome;
     private String descricao;
@@ -12,12 +18,11 @@ public class Orcamentos {
     private LocalDate dataInicio;
     private LocalDate dataFim;
 
-    public Orcamentos() {}
+    public OrcamentosEntity(){}
 
-    public Orcamentos(Long id, String nome, String descricao,
-                      BigDecimal valorTotal, LocalDate dataInicio,
-                      LocalDate dataFim) {
-        this.id = id;
+    public OrcamentosEntity(String nome, String descricao,
+                            BigDecimal valorTotal, LocalDate dataInicio,
+                            LocalDate dataFim) {
         this.nome = nome;
         this.descricao = descricao;
         this.valorTotal = valorTotal;

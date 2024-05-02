@@ -1,18 +1,16 @@
 package br.com.matsoft.apifinancas.core.domain.ports;
 
-import br.com.matsoft.apifinancas.core.domain.entities.Receitas;
-import br.com.matsoft.apifinancas.core.domain.entities.Despesas;
-import br.com.matsoft.apifinancas.core.domain.entities.Orcamentos;
-
-import java.util.Collection;
+import br.com.matsoft.apifinancas.core.domain.dtos.DespesasDTO;
+import br.com.matsoft.apifinancas.core.domain.dtos.OrcamentosDTO;
+import br.com.matsoft.apifinancas.core.domain.dtos.ReceitasDTO;
 
 public interface FinancasRepositoryService {
 
-    public Collection<Despesas> getAllDespesas();
-    public Collection<Orcamentos> getAllOrcamentos();
-    public Collection<Receitas> getAllReceitas();
-    public void saveDespesas(Despesas despesas);
-    public void saveOrcamentos(Orcamentos Orcamentos);
-    public void saveReceitas(Receitas Receitas);
+    public DespesasDTO getByIdDespesas(Long id);
+    public OrcamentosDTO getByIdOrcamentos(Long id);
+    public ReceitasDTO getByIdReceitas(Long id);
+    public DespesasDTO saveDespesas(DespesasDTO despesas);
+    public OrcamentosDTO saveOrcamentos(OrcamentosDTO Orcamentos);
+    public ReceitasDTO saveReceitas(ReceitasDTO Receitas);
     public Boolean doesFinancasNameExists(String name);
 }

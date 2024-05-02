@@ -1,27 +1,30 @@
-package br.com.matsoft.apifinancas.core.domain.entities;
+package br.com.matsoft.apifinancas.adapters.persistence;
+
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class Despesas {
+public class ReceitasEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nome;
     private String descricao;
     private BigDecimal valor;
-    private LocalDate data;
-    private CategoriaDespesa categoria;
+    private LocalDate dataRecebimento;
 
-    public Despesas(){}
+    public ReceitasEntity(){}
 
-    public Despesas(Long id, String nome, String descricao, BigDecimal valor,
-                    LocalDate data, CategoriaDespesa categoria) {
-        this.id = id;
+    public ReceitasEntity(String nome, String descricao,
+                          BigDecimal valor, LocalDate dataRecebimento) {
         this.nome = nome;
         this.descricao = descricao;
         this.valor = valor;
-        this.data = data;
-        this.categoria = categoria;
+        this.dataRecebimento = dataRecebimento;
     }
 
     public Long getId() {
@@ -56,19 +59,11 @@ public class Despesas {
         this.valor = valor;
     }
 
-    public LocalDate getData() {
-        return data;
+    public LocalDate getDataRecebimento() {
+        return dataRecebimento;
     }
 
-    public void setData(LocalDate data) {
-        this.data = data;
-    }
-
-    public CategoriaDespesa getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(CategoriaDespesa categoria) {
-        this.categoria = categoria;
+    public void setDataRecebimento(LocalDate dataRecebimento) {
+        this.dataRecebimento = dataRecebimento;
     }
 }
