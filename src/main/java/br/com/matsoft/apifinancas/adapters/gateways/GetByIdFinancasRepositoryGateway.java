@@ -1,7 +1,6 @@
 package br.com.matsoft.apifinancas.adapters.gateways;
 
 import br.com.matsoft.apifinancas.adapters.persistence.*;
-import br.com.matsoft.apifinancas.application.gateways.GetByIdFinancasGateways;
 
 public class GetByIdFinancasRepositoryGateway implements GetByIdFinancasGateways {
 

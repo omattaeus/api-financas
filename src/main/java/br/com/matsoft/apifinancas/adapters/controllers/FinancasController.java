@@ -3,7 +3,6 @@ package br.com.matsoft.apifinancas.adapters.controllers;
 import br.com.matsoft.apifinancas.adapters.controllers.mapper.DespesasMapper;
 import br.com.matsoft.apifinancas.adapters.controllers.mapper.OrcamentosMapper;
 import br.com.matsoft.apifinancas.adapters.controllers.mapper.ReceitasMapper;
-import br.com.matsoft.apifinancas.application.usecases.CreateFinancasUseCaseImpl;
 import br.com.matsoft.apifinancas.core.domain.dtos.DespesasDTO;
 import br.com.matsoft.apifinancas.core.domain.dtos.OrcamentosDTO;
 import br.com.matsoft.apifinancas.core.domain.dtos.ReceitasDTO;
