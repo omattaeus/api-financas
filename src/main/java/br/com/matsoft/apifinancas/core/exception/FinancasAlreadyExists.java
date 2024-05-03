@@ -1,4 +1,4 @@
-package br.com.matsoft.apifinancas.core.domain.exception;
+package br.com.matsoft.apifinancas.core.exception;
 
 import java.io.Serial;
 

@@ -3,11 +3,11 @@ package br.com.matsoft.apifinancas.application.usecases;
 import br.com.matsoft.apifinancas.adapters.persistence.DespesasEntity;
 import br.com.matsoft.apifinancas.adapters.persistence.OrcamentosEntity;
 import br.com.matsoft.apifinancas.adapters.persistence.ReceitasEntity;
-import br.com.matsoft.apifinancas.core.domain.ports.FinancasRepositoryService;
+import br.com.matsoft.apifinancas.core.ports.FinancasRepositoryService;
 import br.com.matsoft.apifinancas.application.gateways.GetByIdFinancasGateways;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 public class GetByIdFinancasUseCaseImpl implements GetByIdFinancasGateways {
 
     private final FinancasRepositoryService financasRepositoryService;

@@ -1,21 +1,27 @@
 package br.com.matsoft.apifinancas.adapters.persistence;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "orcamentos")
 public class OrcamentosEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @NotNull
     private String nome;
+    @NotNull
     private String descricao;
+    @NotNull
     private BigDecimal valorTotal;
+    @NotNull
     private LocalDate dataInicio;
+    @NotNull
     private LocalDate dataFim;
 
     public OrcamentosEntity(){}

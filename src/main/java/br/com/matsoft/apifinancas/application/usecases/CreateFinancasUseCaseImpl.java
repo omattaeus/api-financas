@@ -3,12 +3,12 @@ package br.com.matsoft.apifinancas.application.usecases;
 import br.com.matsoft.apifinancas.core.domain.dtos.DespesasDTO;
 import br.com.matsoft.apifinancas.core.domain.dtos.OrcamentosDTO;
 import br.com.matsoft.apifinancas.core.domain.dtos.ReceitasDTO;
-import br.com.matsoft.apifinancas.core.domain.exception.FinancasAlreadyExists;
-import br.com.matsoft.apifinancas.core.domain.ports.FinancasRepositoryService;
+import br.com.matsoft.apifinancas.core.exception.FinancasAlreadyExists;
+import br.com.matsoft.apifinancas.core.ports.FinancasRepositoryService;
 import br.com.matsoft.apifinancas.application.gateways.CreateFinancasGateways;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 public class CreateFinancasUseCaseImpl implements CreateFinancasGateways {
 
     private final FinancasRepositoryService financasRepositoryService;

@@ -1,22 +1,28 @@
 package br.com.matsoft.apifinancas.adapters.persistence;
 
 import br.com.matsoft.apifinancas.core.domain.dtos.CategoriaDespesaDTO;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "despesas")
 public class DespesasEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @NotNull
     private String nome;
+    @NotNull
     private String descricao;
+    @NotNull
     private BigDecimal valor;
+    @NotNull
     private LocalDate data;
+    @NotNull
     private CategoriaDespesaDTO categoria;
 
     public DespesasEntity(){}

@@ -1,10 +1,7 @@
 package br.com.matsoft.apifinancas.adapters.controllers.mapper;
 
-import br.com.matsoft.apifinancas.adapters.controllers.CreateDespesasRequest;
-import br.com.matsoft.apifinancas.adapters.controllers.CreateDespesasResponse;
 import br.com.matsoft.apifinancas.adapters.controllers.CreateReceitasRequest;
 import br.com.matsoft.apifinancas.adapters.controllers.CreateReceitasResponse;
-import br.com.matsoft.apifinancas.core.domain.dtos.DespesasDTO;
 import br.com.matsoft.apifinancas.core.domain.dtos.ReceitasDTO;
 
 public class ReceitasMapper {

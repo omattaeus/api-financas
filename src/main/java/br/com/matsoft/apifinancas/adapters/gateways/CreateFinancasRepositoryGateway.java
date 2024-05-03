@@ -5,7 +5,7 @@ import br.com.matsoft.apifinancas.core.domain.dtos.DespesasDTO;
 import br.com.matsoft.apifinancas.core.domain.dtos.OrcamentosDTO;
 import br.com.matsoft.apifinancas.core.domain.dtos.ReceitasDTO;
 import br.com.matsoft.apifinancas.application.gateways.CreateFinancasGateways;
-import br.com.matsoft.apifinancas.core.domain.exception.FinancasAlreadyExists;
+import br.com.matsoft.apifinancas.core.exception.FinancasAlreadyExists;
 
 public class CreateFinancasRepositoryGateway implements CreateFinancasGateways {
 
