@@ -5,7 +5,9 @@ import br.com.matsoft.apifinancas.core.domain.dtos.ReceitasDTO;
 import br.com.matsoft.apifinancas.core.exception.FinancasAlreadyExists;
 import br.com.matsoft.apifinancas.core.ports.FinancasRepositoryService;
 import br.com.matsoft.apifinancas.core.ports.ReceitasRepositoryService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CreateReceitasUseCaseImpl implements CreateReceitasGateways {
 
     private final ReceitasRepositoryService receitasRepositoryService;

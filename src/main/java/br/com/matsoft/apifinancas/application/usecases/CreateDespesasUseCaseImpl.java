@@ -5,7 +5,9 @@ import br.com.matsoft.apifinancas.core.domain.dtos.DespesasDTO;
 import br.com.matsoft.apifinancas.core.exception.FinancasAlreadyExists;
 import br.com.matsoft.apifinancas.core.ports.DespesasRepositoryService;
 import br.com.matsoft.apifinancas.core.ports.FinancasRepositoryService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CreateDespesasUseCaseImpl implements CreateDespesasGateways {
 
     private final DespesasRepositoryService despesasRepositoryService;

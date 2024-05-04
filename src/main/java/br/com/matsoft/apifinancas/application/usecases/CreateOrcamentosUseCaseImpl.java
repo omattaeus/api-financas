@@ -6,7 +6,9 @@ import br.com.matsoft.apifinancas.core.domain.dtos.OrcamentosDTO;
 import br.com.matsoft.apifinancas.core.exception.FinancasAlreadyExists;
 import br.com.matsoft.apifinancas.core.ports.FinancasRepositoryService;
 import br.com.matsoft.apifinancas.core.ports.OrcamentosRepositoryService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CreateOrcamentosUseCaseImpl implements CreateOrcamentosGateway {
 
     private final OrcamentosRepositoryService orcamentosRepositoryService;

@@ -7,5 +7,4 @@ public interface DespesasRepositoryService {
 
     public DespesasEntity getByIdDespesas(Long id);
     public DespesasDTO saveDespesas(DespesasDTO despesas);
-
 }
