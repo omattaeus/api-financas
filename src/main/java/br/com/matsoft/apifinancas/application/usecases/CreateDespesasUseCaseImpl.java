@@ -4,19 +4,20 @@ import br.com.matsoft.apifinancas.adapters.persistence.DespesasEntity;
 import br.com.matsoft.apifinancas.application.gateways.CreateDespesasGateways;
 import br.com.matsoft.apifinancas.core.domain.dtos.DespesasDTO;
 import br.com.matsoft.apifinancas.core.exception.FinancasAlreadyExists;
-import br.com.matsoft.apifinancas.core.ports.DespesasRepositoryService;
 import br.com.matsoft.apifinancas.core.ports.FinancasRepositoryService;
-import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 public class CreateDespesasUseCaseImpl implements CreateDespesasGateways {
 
-    private final DespesasRepositoryService despesasRepositoryService;
+    @Qualifier("createDespesasGateways")
+    private final CreateDespesasGateways createDespesasGateways;
+    @Qualifier("financasRepositoryService")
     private final FinancasRepositoryService financasRepositoryService;
 
-    public CreateDespesasUseCaseImpl(DespesasRepositoryService despesasRepositoryService,
-                                     FinancasRepositoryService financasRepositoryService) {
-        this.despesasRepositoryService = despesasRepositoryService;
+    public CreateDespesasUseCaseImpl(CreateDespesasGateways createDespesasGateways, FinancasRepositoryService financasRepositoryService) {
+        this.createDespesasGateways = createDespesasGateways;
         this.financasRepositoryService = financasRepositoryService;
     }
 
@@ -25,11 +26,11 @@ public class CreateDespesasUseCaseImpl implements CreateDespesasGateways {
         if(financasRepositoryService.doesFinancasNameExists(despesas.nome()))
             throw new FinancasAlreadyExists();
 
-        return despesasRepositoryService.saveDespesas(despesas);
+        return createDespesasGateways.createDespesas(despesas);
     }
 
     @Override
     public DespesasEntity getByIdDespesas(Long id) {
-        return despesasRepositoryService.getByIdDespesas(id);
+        return createDespesasGateways.getByIdDespesas(id);
     }
 }

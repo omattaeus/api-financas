@@ -5,17 +5,18 @@ import br.com.matsoft.apifinancas.application.gateways.CreateReceitasGateways;
 import br.com.matsoft.apifinancas.core.domain.dtos.ReceitasDTO;
 import br.com.matsoft.apifinancas.core.exception.FinancasAlreadyExists;
 import br.com.matsoft.apifinancas.core.ports.FinancasRepositoryService;
-import br.com.matsoft.apifinancas.core.ports.ReceitasRepositoryService;
-import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 public class CreateReceitasUseCaseImpl implements CreateReceitasGateways {
-
-    private final ReceitasRepositoryService receitasRepositoryService;
+    @Qualifier("createReceitasGateways")
+    private final CreateReceitasGateways createReceitasGateways;
+    @Qualifier("financasRepositoryService")
     private final FinancasRepositoryService financasRepositoryService;
 
-    public CreateReceitasUseCaseImpl(ReceitasRepositoryService receitasRepositoryService, FinancasRepositoryService financasRepositoryService) {
-        this.receitasRepositoryService = receitasRepositoryService;
+    public CreateReceitasUseCaseImpl(CreateReceitasGateways createReceitasGateways, FinancasRepositoryService financasRepositoryService) {
+        this.createReceitasGateways = createReceitasGateways;
         this.financasRepositoryService = financasRepositoryService;
     }
 
@@ -24,11 +25,11 @@ public class CreateReceitasUseCaseImpl implements CreateReceitasGateways {
         if(financasRepositoryService.doesFinancasNameExists(receitas.nome()))
             throw new FinancasAlreadyExists();
 
-        return receitasRepositoryService.saveReceitas(receitas);
+        return createReceitasGateways.createReceitas(receitas);
     }
 
     @Override
     public ReceitasEntity getByIdReceitas(Long id) {
-        return receitasRepositoryService.getByIdReceitas(id);
+        return createReceitasGateways.getByIdReceitas(id);
     }
 }

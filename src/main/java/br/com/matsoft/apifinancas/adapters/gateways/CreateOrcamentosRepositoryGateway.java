@@ -5,17 +5,23 @@ import br.com.matsoft.apifinancas.adapters.persistence.OrcamentosRepository;
 import br.com.matsoft.apifinancas.application.gateways.CreateOrcamentosGateway;
 import br.com.matsoft.apifinancas.core.domain.dtos.OrcamentosDTO;
 import br.com.matsoft.apifinancas.core.exception.FinancasAlreadyExists;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CreateOrcamentosRepositoryGateway implements CreateOrcamentosGateway {
 
+    @Qualifier("orcamentosRepository")
     private final OrcamentosRepository orcamentosRepository;
+    @Qualifier("orcamentosEntityMapper")
     private final OrcamentosEntityMapper orcamentosEntityMapper;
 
-    public CreateOrcamentosRepositoryGateway(OrcamentosRepository orcamentosRepository, OrcamentosEntityMapper orcamentosEntityMapper) {
+    public CreateOrcamentosRepositoryGateway(OrcamentosRepository orcamentosRepository,
+                                             OrcamentosEntityMapper orcamentosEntityMapper) {
         this.orcamentosRepository = orcamentosRepository;
         this.orcamentosEntityMapper = orcamentosEntityMapper;
     }
-
 
     @Override
     public OrcamentosDTO createOrcamento(OrcamentosDTO orcamentosDomainObj) throws FinancasAlreadyExists {

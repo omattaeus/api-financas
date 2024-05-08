@@ -3,36 +3,66 @@ package br.com.matsoft.apifinancas.adapters.configuration;
 import br.com.matsoft.apifinancas.adapters.controllers.mapper.DespesasMapper;
 import br.com.matsoft.apifinancas.adapters.controllers.mapper.OrcamentosMapper;
 import br.com.matsoft.apifinancas.adapters.controllers.mapper.ReceitasMapper;
-import br.com.matsoft.apifinancas.adapters.gateways.DespesasEntityMapper;
-import br.com.matsoft.apifinancas.adapters.gateways.OrcamentosEntityMapper;
-import br.com.matsoft.apifinancas.adapters.gateways.ReceitasEntityMapper;
+import br.com.matsoft.apifinancas.adapters.gateways.*;
+import br.com.matsoft.apifinancas.adapters.persistence.DespesasRepository;
+import br.com.matsoft.apifinancas.adapters.persistence.OrcamentosRepository;
+import br.com.matsoft.apifinancas.adapters.persistence.ReceitasRepository;
+import br.com.matsoft.apifinancas.application.gateways.CreateDespesasGateways;
+import br.com.matsoft.apifinancas.application.gateways.CreateOrcamentosGateway;
+import br.com.matsoft.apifinancas.application.gateways.CreateReceitasGateways;
 import br.com.matsoft.apifinancas.application.usecases.*;
-import br.com.matsoft.apifinancas.core.ports.DespesasRepositoryService;
 import br.com.matsoft.apifinancas.core.ports.FinancasRepositoryService;
-import br.com.matsoft.apifinancas.core.ports.OrcamentosRepositoryService;
-import br.com.matsoft.apifinancas.core.ports.ReceitasRepositoryService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@Configuration
+@Configuration(enforceUniqueMethods = false)
+@EnableTransactionManagement
+@EnableJpaAuditing
 public class FinancasConfig {
 
     @Bean
-    CreateDespesasUseCaseImpl createDespesasUseCase(DespesasRepositoryService despesasRepositoryService,
+    @Primary
+    CreateDespesasUseCaseImpl createDespesasUseCase(CreateDespesasGateways createDespesasGateways,
                                                     FinancasRepositoryService financasRepositoryService){
-        return new CreateDespesasUseCaseImpl(despesasRepositoryService, financasRepositoryService);
+        return new CreateDespesasUseCaseImpl(createDespesasGateways, financasRepositoryService);
     }
 
     @Bean
-    CreateOrcamentosUseCaseImpl createOrcamentosUseCase(OrcamentosRepositoryService orcamentosRepositoryService,
+    @Primary
+    CreateOrcamentosUseCaseImpl createOrcamentosUseCase(CreateOrcamentosGateway createOrcamentosGateway,
                                                         FinancasRepositoryService financasRepositoryService){
-        return new CreateOrcamentosUseCaseImpl(orcamentosRepositoryService, financasRepositoryService);
+        return new CreateOrcamentosUseCaseImpl(createOrcamentosGateway, financasRepositoryService);
     }
 
     @Bean
-    CreateReceitasUseCaseImpl createReceitasUseCase(ReceitasRepositoryService receitasRepositoryService,
+    @Primary
+    CreateReceitasUseCaseImpl createReceitasUseCase(CreateReceitasGateways createReceitasGateways,
                                                     FinancasRepositoryService financasRepositoryService){
-        return new CreateReceitasUseCaseImpl(receitasRepositoryService, financasRepositoryService);
+        return new CreateReceitasUseCaseImpl(createReceitasGateways, financasRepositoryService);
+    }
+
+    @Bean
+    @Primary
+    CreateDespesasRepositoryGateway createDespesasRepositoryGateway(DespesasRepository despesasRepository,
+                                                                    DespesasEntityMapper despesasEntityMapper){
+        return new CreateDespesasRepositoryGateway(despesasRepository, despesasEntityMapper);
+    }
+
+    @Bean
+    @Primary
+    CreateOrcamentosRepositoryGateway createOrcamentosRepositoryGateway(OrcamentosRepository orcamentosRepository,
+                                                                        OrcamentosEntityMapper orcamentosEntityMapper){
+        return new CreateOrcamentosRepositoryGateway(orcamentosRepository, orcamentosEntityMapper);
+    }
+
+    @Bean
+    @Primary
+    CreateReceitasRepositoryGateway createOrcamentosRepositoryGateway(ReceitasRepository receitasRepository,
+                                                                      ReceitasEntityMapper receitasEntityMapper){
+        return new CreateReceitasRepositoryGateway(receitasRepository, receitasEntityMapper);
     }
 
     @Bean

@@ -2,21 +2,22 @@ package br.com.matsoft.apifinancas.application.usecases;
 
 import br.com.matsoft.apifinancas.adapters.persistence.OrcamentosEntity;
 import br.com.matsoft.apifinancas.application.gateways.CreateOrcamentosGateway;
-import br.com.matsoft.apifinancas.core.domain.dtos.DespesasDTO;
 import br.com.matsoft.apifinancas.core.domain.dtos.OrcamentosDTO;
 import br.com.matsoft.apifinancas.core.exception.FinancasAlreadyExists;
 import br.com.matsoft.apifinancas.core.ports.FinancasRepositoryService;
-import br.com.matsoft.apifinancas.core.ports.OrcamentosRepositoryService;
-import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 public class CreateOrcamentosUseCaseImpl implements CreateOrcamentosGateway {
 
-    private final OrcamentosRepositoryService orcamentosRepositoryService;
+    @Qualifier("createOrcamentosGateway")
+    private final CreateOrcamentosGateway createOrcamentosGateway;
+    @Qualifier("financasRepositoryService")
     private final FinancasRepositoryService financasRepositoryService;
 
-    public CreateOrcamentosUseCaseImpl(OrcamentosRepositoryService orcamentosRepositoryService, FinancasRepositoryService financasRepositoryService) {
-        this.orcamentosRepositoryService = orcamentosRepositoryService;
+    public CreateOrcamentosUseCaseImpl(CreateOrcamentosGateway createOrcamentosGateway, FinancasRepositoryService financasRepositoryService) {
+        this.createOrcamentosGateway = createOrcamentosGateway;
         this.financasRepositoryService = financasRepositoryService;
     }
 
@@ -25,11 +26,11 @@ public class CreateOrcamentosUseCaseImpl implements CreateOrcamentosGateway {
         if(financasRepositoryService.doesFinancasNameExists(orcamentos.nome()))
             throw new FinancasAlreadyExists();
 
-        return orcamentosRepositoryService.saveOrcamentos(orcamentos);
+        return createOrcamentosGateway.createOrcamento(orcamentos);
     }
 
     @Override
     public OrcamentosEntity getByIdOrcamentos(Long id) {
-        return orcamentosRepositoryService.getByIdOrcamentos(id);
+        return createOrcamentosGateway.getByIdOrcamentos(id);
     }
 }

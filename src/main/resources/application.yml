@@ -1,4 +1,7 @@
 spring:
+  exclude:
+    - org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration
+    - org.springframework.boot.autoconfigure.integration.IntegrationAutoConfiguration
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/api-financas?useTimezone=true&serverTimezone=UTC
