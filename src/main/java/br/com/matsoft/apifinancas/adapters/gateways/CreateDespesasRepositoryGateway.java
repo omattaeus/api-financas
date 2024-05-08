@@ -22,4 +22,9 @@ public class CreateDespesasRepositoryGateway implements CreateDespesasGateways {
         DespesasEntity savedObj = despesasRepository.save(despesasEntity);
         return despesasEntityMapper.toDomainObj(savedObj);
     }
+
+    @Override
+    public DespesasEntity getByIdDespesas(Long id) {
+        return despesasRepository.getReferenceById(id);
+    }
 }

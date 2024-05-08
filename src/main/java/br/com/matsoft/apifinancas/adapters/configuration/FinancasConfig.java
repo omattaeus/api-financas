@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class DespesasConfig {
+public class FinancasConfig {
 
     @Bean
     CreateDespesasUseCaseImpl createDespesasUseCase(DespesasRepositoryService despesasRepositoryService,
@@ -33,21 +33,6 @@ public class DespesasConfig {
     CreateReceitasUseCaseImpl createReceitasUseCase(ReceitasRepositoryService receitasRepositoryService,
                                                     FinancasRepositoryService financasRepositoryService){
         return new CreateReceitasUseCaseImpl(receitasRepositoryService, financasRepositoryService);
-    }
-
-    @Bean
-    GetByIdDespesasUseCaseImpl getByIdDespesasUseCase(DespesasRepositoryService despesasRepositoryService){
-        return new GetByIdDespesasUseCaseImpl(despesasRepositoryService);
-    }
-
-    @Bean
-    GetByIdOrcamentosUseCaseImpl getByIdOrcamentosUseCase(OrcamentosRepositoryService orcamentosRepositoryService){
-        return new GetByIdOrcamentosUseCaseImpl(orcamentosRepositoryService);
-    }
-
-    @Bean
-    GetByIdReceitasUseCaseImpl getByIdReceitasUseCase(ReceitasRepositoryService receitasRepositoryService){
-        return new GetByIdReceitasUseCaseImpl(receitasRepositoryService);
     }
 
     @Bean

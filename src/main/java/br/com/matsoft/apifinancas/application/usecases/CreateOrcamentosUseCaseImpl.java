@@ -1,5 +1,6 @@
 package br.com.matsoft.apifinancas.application.usecases;
 
+import br.com.matsoft.apifinancas.adapters.persistence.OrcamentosEntity;
 import br.com.matsoft.apifinancas.application.gateways.CreateOrcamentosGateway;
 import br.com.matsoft.apifinancas.core.domain.dtos.DespesasDTO;
 import br.com.matsoft.apifinancas.core.domain.dtos.OrcamentosDTO;
@@ -25,5 +26,10 @@ public class CreateOrcamentosUseCaseImpl implements CreateOrcamentosGateway {
             throw new FinancasAlreadyExists();
 
         return orcamentosRepositoryService.saveOrcamentos(orcamentos);
+    }
+
+    @Override
+    public OrcamentosEntity getByIdOrcamentos(Long id) {
+        return orcamentosRepositoryService.getByIdOrcamentos(id);
     }
 }

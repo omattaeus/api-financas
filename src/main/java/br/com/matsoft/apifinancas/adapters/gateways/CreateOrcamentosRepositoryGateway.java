@@ -23,4 +23,9 @@ public class CreateOrcamentosRepositoryGateway implements CreateOrcamentosGatewa
         OrcamentosEntity savedObj = orcamentosRepository.save(orcamentosEntity);
         return orcamentosEntityMapper.toDomainObj(savedObj);
     }
+
+    @Override
+    public OrcamentosEntity getByIdOrcamentos(Long id) {
+        return orcamentosRepository.getReferenceById(id);
+    }
 }

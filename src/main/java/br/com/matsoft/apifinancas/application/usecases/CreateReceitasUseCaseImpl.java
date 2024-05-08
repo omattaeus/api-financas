@@ -1,5 +1,6 @@
 package br.com.matsoft.apifinancas.application.usecases;
 
+import br.com.matsoft.apifinancas.adapters.persistence.ReceitasEntity;
 import br.com.matsoft.apifinancas.application.gateways.CreateReceitasGateways;
 import br.com.matsoft.apifinancas.core.domain.dtos.ReceitasDTO;
 import br.com.matsoft.apifinancas.core.exception.FinancasAlreadyExists;
@@ -24,5 +25,10 @@ public class CreateReceitasUseCaseImpl implements CreateReceitasGateways {
             throw new FinancasAlreadyExists();
 
         return receitasRepositoryService.saveReceitas(receitas);
+    }
+
+    @Override
+    public ReceitasEntity getByIdReceitas(Long id) {
+        return receitasRepositoryService.getByIdReceitas(id);
     }
 }

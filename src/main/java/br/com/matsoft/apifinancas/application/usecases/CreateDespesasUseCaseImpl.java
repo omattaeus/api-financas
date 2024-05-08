@@ -1,5 +1,6 @@
 package br.com.matsoft.apifinancas.application.usecases;
 
+import br.com.matsoft.apifinancas.adapters.persistence.DespesasEntity;
 import br.com.matsoft.apifinancas.application.gateways.CreateDespesasGateways;
 import br.com.matsoft.apifinancas.core.domain.dtos.DespesasDTO;
 import br.com.matsoft.apifinancas.core.exception.FinancasAlreadyExists;
@@ -25,5 +26,10 @@ public class CreateDespesasUseCaseImpl implements CreateDespesasGateways {
             throw new FinancasAlreadyExists();
 
         return despesasRepositoryService.saveDespesas(despesas);
+    }
+
+    @Override
+    public DespesasEntity getByIdDespesas(Long id) {
+        return despesasRepositoryService.getByIdDespesas(id);
     }
 }

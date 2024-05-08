@@ -1,5 +1,6 @@
 package br.com.matsoft.apifinancas.adapters.gateways;
 
+import br.com.matsoft.apifinancas.adapters.persistence.OrcamentosEntity;
 import br.com.matsoft.apifinancas.adapters.persistence.ReceitasEntity;
 import br.com.matsoft.apifinancas.adapters.persistence.ReceitasRepository;
 import br.com.matsoft.apifinancas.application.gateways.CreateReceitasGateways;
@@ -22,5 +23,10 @@ public class CreateReceitasRepositoryGateway implements CreateReceitasGateways {
         ReceitasEntity receitasEntity = receitasEntityMapper.toEntity(receitasDomainObj);
         ReceitasEntity savedObj = receitasRepository.save(receitasEntity);
         return receitasEntityMapper.toDomainObj(savedObj);
+    }
+
+    @Override
+    public ReceitasEntity getByIdReceitas(Long id) {
+        return receitasRepository.getReferenceById(id);
     }
 }
