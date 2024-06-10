@@ -11,7 +11,7 @@
    
 ### Como rodar na minha máquina?
 
-- Clone o projeto `git clone git@github.com:omattaeus/api-users.git`
+- Clone o projeto `git clone git@github.com:omattaeus/api-financas.git`
   
 - Rode `javac Startup.java`
 - Pronto 🎉
