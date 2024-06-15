@@ -29,7 +29,7 @@
 - `./apllication/gateways`: É onde está toda parte de interfaces com métodos declaradas mais não implementados, que será implementado no usecases.
 - `./apllication/usecases`: É onde está toda parte da implementação do gateways, classes como CreateOrcamentos, CreateDespesas e CreateReceitas, para ser usado na camadas mais externa, essas implementações é como se fossem o service da aplicação.
 
-- #### Camadas mais externa
+#### Camadas mais externa
 - `./adapters`: É onde está toda a parte da camada mais externa da aplicação, é onde será a parte que será exposta para o cliente, como a parte de persistência, controllers etc.
 - `./adapters/controllers`: É onde está a parte de controladores da aplicação, ou seja, é onde fica a parte mais externa, é por aqui que o usuário poderá estar fazendo requisições atráves da URl, por métodos HTTP: Get, Post, Put e Delete.
 - `./adapters/gateways`: É onde está a parte de implementação do gateway.
